@@ -1,45 +1,53 @@
-import React from 'react';
-import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import React from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export default function Card(props) {
+export default function Card({ name, id, min, max, img, onClose }) {
   return (
-      <ConteinerCard>
-        <ButtonClose onClick={props.onClose}>X</ButtonClose>
-        <Link to={`/city/${props.id}`}>
-          <h4>{props.name}</h4>
-          <InfoOfCard>
-            <div>
+    <ConteinerCard>
+      <ButtonClose onClick={onClose}>X</ButtonClose>
+      <Link to={`/city/${id}`}>
+        <h2>{name}</h2>
+        <InfoOfCard>
+          <div>
             <p>Min</p>
-            <p>{props.min}°</p>
-            </div>
-            <div>
+            <p>{min}°</p>
+          </div>
+          <div>
             <p>Max</p>
-            <p>{props.max}°</p>
-            </div>
-            <img alt='Img de sol' src={`http://openweathermap.org/img/wn/${props.img}@2x.png`} />
-          </InfoOfCard>
-        </Link>
-      </ConteinerCard>
-  )
-};
+            <p>{max}°</p>
+          </div>
+          <img
+            alt="Img de sol"
+            src={`http://openweathermap.org/img/wn/${img}@2x.png`}
+          />
+        </InfoOfCard>
+      </Link>
+    </ConteinerCard>
+  );
+}
 
 const ConteinerCard = styled.div`
   display: flex;
   flex-direction: column;
   width: 30%;
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0, 0, 0, 0.8);
   box-shadow: 2px 2px;
   border-radius: 10px;
-  & h4{
+  & h2 {
     color: white;
+    margin: 0px;
   }
-  &:hover{
+  &:hover {
     background-color: black;
   }
+  & a {
+    text-decoration: none;
+    text-align: center;
+  }
   margin: 10px 0px 10px 0px;
-  @media screen and (max-width: 900px){
-    width:80%;
+  @media screen and (max-width: 900px) {
+    width: 80%;
   }
 `;
 
@@ -47,23 +55,23 @@ const InfoOfCard = styled.div`
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  & div{
-    align-self: flex-start;
+  & div {
     p {
       color: white;
+      font-size: 1rem;
     }
-  } 
+  }
 `;
 
 const ButtonClose = styled.button`
-    align-self: flex-end;
-    background-color: transparent;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    font-family:bond;
-    &:hover{
-      background-color: rgba(255,255,255,0.5);
-      color: black;
-    }
+  align-self: flex-end;
+  background-color: transparent;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  margin: 5px 3px;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
+  }
 `;
