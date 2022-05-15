@@ -1,28 +1,26 @@
-import React from 'react';
-import Card from './Card';
-import styled from 'styled-components';
-
-
+import React from "react";
+import Card from "./Card";
+import styled from "styled-components";
 
 export default function Cards(props) {
-  return(
+  return (
     <>
       <ConteinerOfCards>
-        {props.cities.map((elem)=> 
-            <Card key={elem.id}
+        {props.cities.map((elem) => (
+          <Card
+            key={elem.id}
             id={elem.id}
             max={elem.max}
             min={elem.min}
             name={elem.name}
             img={elem.img}
-            onClose={(e)=>props.onClose(e, elem.id)}
-            />
-          )
-        }
+            onClose={(e) => props.onClose(e, elem.id)}
+          />
+        ))}
       </ConteinerOfCards>
     </>
   );
-};
+}
 
 const ConteinerOfCards = styled.div`
   display: flex;
@@ -30,7 +28,7 @@ const ConteinerOfCards = styled.div`
   justify-content: space-evenly;
   flex-wrap: wrap;
   padding: 20px 0px 20px 0px;
-  @media screen and (max-width: 900px){
+  @media screen and (max-width: 900px) {
     flex-direction: column;
   }
 `;
