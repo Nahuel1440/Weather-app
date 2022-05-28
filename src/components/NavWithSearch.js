@@ -14,6 +14,7 @@ const Div = styled.div`
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
+  height: 45px;
   & a {
     color: white;
     font-weight: bold;

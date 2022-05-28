@@ -33,7 +33,7 @@ export default function App() {
             latitud: recurso.coord.lat,
             longitud: recurso.coord.lon,
           };
-          setCities((oldCities) => [...oldCities, newCity]);
+          setCities((oldCities) => [newCity, ...oldCities]);
         } else if (recurso.main !== undefined) {
           alert(`Ya se esta mostrando ${city}`);
         } else alert("Ciudad no encontrada");
