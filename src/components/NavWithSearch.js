@@ -4,7 +4,7 @@ import styled from "styled-components";
 import logo from "../img/icons-weather.png";
 import { NavLink } from "react-router-dom";
 
-const DivBar = styled.div`
+const Header = styled.header`
   background-color: rgba(0, 0, 0, 0.8);
 `;
 
@@ -29,7 +29,7 @@ const Div = styled.div`
 
 export default function NavWithSearch(props) {
   return (
-    <DivBar>
+    <Header>
       <Div>
         <div>
           <a href="/">The weather app</a>
@@ -37,6 +37,6 @@ export default function NavWithSearch(props) {
         </div>
         <SearchBar onSearch={props.onSearch} />
       </Div>
-    </DivBar>
+    </Header>
   );
 }
