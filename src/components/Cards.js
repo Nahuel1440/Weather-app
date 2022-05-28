@@ -3,20 +3,39 @@ import Card from "./Card";
 import styled from "styled-components";
 
 export default function Cards(props) {
+  // const [firstCard, ...cards] = props.cities;
+  const [...auxCities] = props.cities;
+  const firstCard = auxCities.shift();
   return (
     <>
-      <ConteinerOfCards>
-        {props.cities.map((elem) => (
+      <DivFirstCard>
+        {firstCard ? (
           <Card
-            key={elem.id}
-            id={elem.id}
-            max={elem.max}
-            min={elem.min}
-            name={elem.name}
-            img={elem.img}
-            onClose={(e) => props.onClose(e, elem.id)}
+            key={firstCard.id}
+            id={firstCard.id}
+            max={firstCard.max}
+            min={firstCard.min}
+            name={firstCard.name}
+            img={firstCard.img}
+            onClose={(e) => props.onClose(e, firstCard.id)}
           />
-        ))}
+        ) : null}
+      </DivFirstCard>
+      {auxCities.length > 0 ? <hr style={{ borderColor: "black" }} /> : null}
+      <ConteinerOfCards>
+        {props.cities.map((elem, i) =>
+          i >= 1 ? (
+            <Card
+              key={elem.id}
+              id={elem.id}
+              max={elem.max}
+              min={elem.min}
+              name={elem.name}
+              img={elem.img}
+              onClose={(e) => props.onClose(e, elem.id)}
+            />
+          ) : null
+        )}
       </ConteinerOfCards>
     </>
   );
@@ -33,46 +52,8 @@ const ConteinerOfCards = styled.div`
   }
 `;
 
-/* export default class Cards extends React.Component{
-  constructor(props){
-    super(props);
-
-    let state = {}
-    this.props.cities.map((elem)=>state[elem.id] = true);
-
-    this.state = {
-      visibility: state
-    }
-    console.log(this.state);
-  }
-  
-
-  onClose = (e, id) => {
-    let newState = this.state.visibility;
-    newState[id] = false;
-    this.setState({
-     visibility: newState
-    })
-  }
-
-  render(){
-    return(
-        <>
-          <h3>Cards Component</h3>
-          <ConteinerOfCards>
-            {this.props.cities.map((elem)=> 
-                this.state.visibility[elem.id] ?
-                <Card key={elem.id}
-                max={elem.main.temp_max}
-                min={elem.main.temp_min}
-                name={elem.name}
-                img={elem.weather[0].icon}
-                cerrar={(e)=>this.onClose(e,elem.id)}
-                />
-                : null
-                )}
-          </ConteinerOfCards>
-        </>
-    )   
-  }; 
-}*/
+const DivFirstCard = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 20px 0px 20px 0px;
+`;
