@@ -25,6 +25,9 @@ const Div = styled.div`
   }
   @media screen and (max-width: 900px) {
     margin: 0px 10px;
+    & a {
+      font-size: 1rem;
+    }
   }
 `;
 

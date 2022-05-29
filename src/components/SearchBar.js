@@ -62,4 +62,11 @@ const InputSearch = styled.input`
     width: 211px;
     background-color: white;
   }
+  @media screen and (max-width: 900px) {
+    &:focus {
+      box-shadow: 0 0 8px 0 dodgerBlue;
+      width: 123px;
+      background-color: white;
+    }
+  }
 `;
