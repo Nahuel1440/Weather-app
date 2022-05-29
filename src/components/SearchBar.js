@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-/* import searchicon from '../img/Search-icon.png' */
+import searchicon from "../img/Search-icon.png";
 
 export default function SearchBar(props) {
   const [city, setCity] = useState("");
@@ -14,45 +14,52 @@ export default function SearchBar(props) {
           return props.onSearch(city);
         }}
       >
-        <InputSearch
-          type="text"
-          placeholder=" Ingrese una ciudad"
-          onChange={(e) => setCity(e.target.value)}
-          value={city}
-        />
-        <ButtonSearch type="submit">Agregar</ButtonSearch>
+        <Div style={{ display: "flex", alingItems: "center" }}>
+          <InputSearch
+            type="text"
+            placeholder=" Ingrese una ciudad"
+            onChange={(e) => setCity(e.target.value)}
+            value={city}
+          />
+          <Img src={searchicon} alt="" />
+        </Div>
       </form>
     </div>
   );
 }
 
-const ButtonSearch = styled.button`
-  background-color: #191919;
-  color: white;
-  border-radius: 6px;
-  margin-left: 3px;
-  margin-right: 6px;
-  height: 35px;
-  font-family: sans-serif;
-  cursor: pointer;
-  &:hover {
-    color: blue;
+const Div = styled.div`
+  &:focus-within {
+    img {
+      filter: brightness(0);
+    }
   }
-  @media screen and (max-width: 900px) {
-    display: none;
-  }
+`;
+
+const Img = styled.img`
+  padding: 5px 0px 0px 8px;
+  max-height: 25px;
+  margin: 0px;
+  position: absolute;
+  pointer-events: none;
+  filter: brightness(100);
 `;
 
 const InputSearch = styled.input`
   border-radius: 20px;
   height: 30px;
   border: 0;
+  width: 0px;
+  background-color: rgba(0, 0, 0, 0);
   outline: none;
   padding-left: 40px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
   &:focus {
     box-shadow: 0 0 8px 0 dodgerBlue;
-  }
-  @media screen and (max-width: 900px) {
-    display: none;
+    width: 211px;
+    background-color: white;
   }
 `;
