@@ -9,5 +9,6 @@ Aplicación web del clima que nos permitirá:
 * [CSS]
 * [Javascript]
 * [ReactRouter]
+* [Styled Components]
 ## API
 https://openweathermap.org/api
